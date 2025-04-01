@@ -1,0 +1,8 @@
+{
+    "num_of_tests": 3,
+    "delete_unzipped_dir":true,
+    "only_run_files_containing_substring":"",
+    "print_outputs":false,
+    "time_until_gives_up":0.03,
+    "zipped_submission_file":"submissions.zip"
+}
