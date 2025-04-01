@@ -4,5 +4,6 @@
     "only_run_files_containing_substring":"",
     "print_outputs":false,
     "time_until_gives_up":0.03,
-    "zipped_submission_file":"submissions.zip"
+    "zipped_submission_file":"submissions.zip",
+    "print_error_from_failed_code":true
 }

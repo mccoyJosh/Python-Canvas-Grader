@@ -19,6 +19,7 @@ with open('config.json', 'r') as config_file:
     print_result_outputs = configs['print_outputs']
     give_up_time_limit = configs['time_until_gives_up']
     zip_file_name = configs['zipped_submission_file']
+    print_error_from_failed_code = configs['print_error_from_failed_code']
 
 
 # Sets up main root file path(s)
@@ -79,7 +80,18 @@ code_result = ""
 
 def run_python(code_file, input_file_obj):
     global code_result
-    code_result = str(subprocess.check_output(['python', code_file], stdin=input_file_obj))
+    errfile = open('error.txt', 'w')
+    try:
+        code_result = str(subprocess.check_output(['python', code_file], stdin=input_file_obj, stderr=errfile))
+    except subprocess.CalledProcessError as e:
+        if print_error_from_failed_code:
+            errfile.close()
+            errfile = open('error.txt', 'r')
+            print(f"Error executing code: {e}")
+            print(errfile.read())
+        else:
+            print("Code failed!!")
+    errfile.close()
 
 # Goes through python files and 
 for student in si:
@@ -116,6 +128,7 @@ for student in si:
                     current_expected = f'outputs/output{i}.txt'
                     print(f"Using {current_input}")
                     with open(current_input) as input_file:
+                        code_result = ""
                         # Runs process running code!
                         p = multiprocessing.Process(target=run_python, name="Python Test Run", args=(code, input_file))
                         p.run()
@@ -141,10 +154,6 @@ for student in si:
                                         print('✅')
                                     else:
                                         print('❌')
-                                    
-                        
-            except subprocess.CalledProcessError as e:
-                print(f"Error executing code: {e}")
             except FileNotFoundError as e:
                 print(f'Could not find file (probably I/O files) {e}')
         else:

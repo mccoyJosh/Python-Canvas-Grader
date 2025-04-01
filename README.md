@@ -91,6 +91,13 @@ This string tells the program the file name for the zip file containing all the 
 Canvas SHOULD export this file as `submissions.zip`, but if that is not the case, you can always rename the
 file or change the expecting zip file name in the config.json file
 
+
+## print_error_from_failed_code
+
+This boolean variable determines if the error produced from a piece of code is printed out.
+
+It is set to true by default, meaning errors WILL BE printed out by default.
+
 # Submission.zip
 
 For assignment on canvas, there should be an option to 
