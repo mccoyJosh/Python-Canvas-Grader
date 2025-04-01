@@ -40,7 +40,7 @@ Otherwise, beware!
 
 There are a few things to configure for the project if need be:
 
-## num_of_tests
+### num_of_tests
 This integer is going to tell the system how many of the input/output files there
 are that needs to be ran and tested.
 
@@ -48,7 +48,7 @@ By default, it uses 3, but if you need more or less, just change this number.
 There is no check in the code for the value inputted here, so
 if you put in 4 and provide it 3 files, it would look for the fourth file and fail.
 
-## delete_unzipped_dir
+### delete_unzipped_dir
 
 This boolean is going to tell the program whether or not you want the unzipped
 directory created in this process deleted at the end of running this program.
@@ -58,7 +58,7 @@ at the code written, you could by setting this to `false`.
 
 It is `true` by default.
 
-## only_run_files_containing_substring
+### only_run_files_containing_substring
 
 This will provide an extra check on to what file to run if there
 are perhaps multiple python files submitted by the student.
@@ -71,21 +71,21 @@ If you only wanted to run the tests against files perhaps containing
 the word 'sum' in it, you would simply change this empty string to `"sum"`.
 Also note this is case sensitive!!
 
-## print_outputs
+### print_outputs
 If you want to see the exact outputs resulting from your tests, set this to
 `true`.
 
 It is set to `false` by default, so you just see whether or not it failed/passed
 each test.
 
-## time_until_gives_up
+### time_until_gives_up
 This floating point value determine how long each individual test will run (in seconds) until the process is terminated.
 
 This is in place to ensure no infinite loops keep the program running forever.
 
 If you have a poorly running device or expect the student's code to run for a longer period of time, change this to a more preferable time.
 
-## zipped_submission_file
+### zipped_submission_file
 
 This string tells the program the file name for the zip file containing all the students code.
 Canvas SHOULD export this file as `submissions.zip`, but if that is not the case, you can always rename the
@@ -101,6 +101,11 @@ Place this file inside of the working directory of this project.
 <h4 style="color:red">THE CODE WILL NOT WORK IF YOU DO NOT PROVIDE IT THIS submissions.zip FILE!!!</h4>
 
 If you renamed the file, there is an option in config.json to change the expecting zip file.
+
+# ignore_students.txt
+
+If there are any students which code you want to skip in your test run, you
+can put their name here. This name needs to match the name found on the file!
 
 # Run docker container
 
