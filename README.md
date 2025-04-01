@@ -118,6 +118,13 @@ Build this image:
 docker build -t canvas_grader .
 ```
 
+
+Rebuild image (and prune dangling):
+```
+docker build -t canvas_grader . && docker image prune -f
+```
+
+
 Run the container:
 ```
 docker run -it --rm canvas_grader

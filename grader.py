@@ -129,6 +129,9 @@ for student in si:
                             p.terminate()
                             print('WARNING: Test code took too long')
                         else:
+                            if print_result_outputs:
+                                formatted_results = code_result.replace("\\n", '\n\t')
+                                print(f"RESULTS: \n\t", formatted_results)
                             # If the process finished, we just check to see if we received a valid output
                             with open(current_expected) as output_file:
                                 for line in output_file:
@@ -138,8 +141,7 @@ for student in si:
                                         print('✅')
                                     else:
                                         print('❌')
-                                    if print_result_outputs:
-                                        print(f"RESULTS: ", code_result)
+                                    
                         
             except subprocess.CalledProcessError as e:
                 print(f"Error executing code: {e}")
